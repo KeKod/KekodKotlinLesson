@@ -21,7 +21,7 @@ private operator fun LocalDate.minus(birthday: String?) {
         val parsedBirthday = LocalDate.parse(birthday, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         val timeDifference = Period.between(parsedBirthday, this)
 
-        if (timeDifference.years > 0 && timeDifference.months > 0 && timeDifference.days > 0) {
+        if (!timeDifference.isNegative) {
             println("It's been " +
                     "${timeDifference.years} years " +
                     "${timeDifference.months}  months and " +
